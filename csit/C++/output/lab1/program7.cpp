@@ -1,36 +1,38 @@
-/*
-7. An electricity board charges the following rates to domestic users to discourage large consumption of energy.
-For the first 100 units - 60P per unit For the next 200 units - 80P per unit Beyond 300 units - 90P per unit
-All users are charged a minimum Rs. 50.00. If the total amount is more than Rs. 300 then additional surcharge of 15% is added.
-Write a program to read the name of user and number of units consumed and print out the charges with name.
-*/
 #include <iostream>
 using namespace std;
+
 int main()
 {
-    int total = 50, n;
+    int n;
+    float total = 50.0;
     string name;
-    cout << "enter the name" << endl;
+
+    cout << "Enter the name: ";
     cin >> name;
-    cout << "enter the no of units" << endl;
+
+    cout << "Enter the number of units consumed: ";
     cin >> n;
-    if (n < 100)
+
+    if (n <= 100)
     {
-        total += (60 * n);
+        total += n * 0.60;
     }
-    else if (n < 300)
+    else if (n <= 300)
     {
-        total += (80 * n);
+        total += 100 * 0.60 + (n - 100) * 0.80;
     }
     else
     {
-        total += (90);
+        total += 100 * 0.60 + 200 * 0.80 + (n - 300) * 0.90;
     }
+
     if (total > 300)
     {
-        total += (0.15 * total);
+        total += total * 0.15;
     }
-    cout << "the name is" << name << " the total bill is" << total;
+
+    cout << "Name: " << name << endl;
+    cout << "Total bill: Rs. " << total << endl;
 
     return 0;
 }
