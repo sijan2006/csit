@@ -35,7 +35,7 @@ int check2(int x[], int y[], int z[])
         bool found = false;
         for (j = 0; j < 5; j++)
         {
-            if (codomain[i] == y[j])
+            if (z[i] == y[j])
             {
                 found = true;
                 break;
