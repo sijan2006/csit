@@ -10,7 +10,7 @@ int recursiveSum(int i, int n)
 int main()
 {
     int n = 5;
-    intsum = 0;
+    int sum = 0;
     for (int i = 1; i <= n; ++i)
     {
         sum += (2 * i + 1);

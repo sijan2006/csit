@@ -1,7 +1,7 @@
 // To compute the sum of the first n numbers using a recursive function
 #include <iostream>
 using namespace std;
-intsumOdd(int n)
+int sumOdd(int n)
 {
     if (n == 1)
         return 1;
