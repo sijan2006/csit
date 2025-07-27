@@ -37,7 +37,6 @@ int main()
 {
     Student stu("Rahul Bhul", 29, "Singha Durbar");
     Details info;
-
     info.showStudentInfo(stu);
 
     return 0;

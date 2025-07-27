@@ -1,0 +1,1 @@
+// WAP that shows dynamic objects.
