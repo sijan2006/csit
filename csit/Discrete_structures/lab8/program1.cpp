@@ -1,3 +1,4 @@
+// Construct a truth table for (p ∨ q) → (¬p ∧ q).
 #include <iostream>
 using namespace std;
 int main()
