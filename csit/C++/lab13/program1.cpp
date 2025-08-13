@@ -1,50 +1,30 @@
-// WAP to enter a roll, name and fee in a abc.txt and display them.
-
+// Write a program to show the run time polymorphism.
 #include <iostream>
-#include <fstream>
 using namespace std;
+
+class Base
+{
+public:
+    virtual void show()
+    {
+        cout << "Base class function" << endl;
+    }
+};
+
+class Derived : public Base
+{
+public:
+    void show()
+    {
+        cout << "Derived class function" << endl;
+    }
+};
 
 int main()
 {
-    int roll;
-    string name;
-    float fee;
-
-    cout << "Enter Roll Number: ";
-    cin >> roll;
-    cin.ignore();
-    cout << "Enter Name: ";
-    getline(cin, name);
-    cout << "Enter Fee: ";
-    cin >> fee;
-
-    ofstream outFile("abc.txt");
-    if (!outFile)
-    {
-        cout << "Error opening file for writing!" << endl;
-        return 1;
-    }
-    outFile << roll << endl;
-    outFile << name << endl;
-    outFile << fee << endl;
-    outFile.close();
-
-    ifstream inFile("abc.txt");
-    if (!inFile)
-    {
-        cout << "Error opening file for reading!" << endl;
-        return 1;
-    }
-    cout << "\nData from abc.txt:" << endl;
-    inFile >> roll;
-    inFile.ignore();
-    getline(inFile, name);
-    inFile >> fee;
-
-    cout << "Roll: " << roll << endl;
-    cout << "Name: " << name << endl;
-    cout << "Fee: " << fee << endl;
-
-    inFile.close();
+    Base *ptr;
+    Derived d;
+    ptr = &d;
+    ptr->show();
     return 0;
 }
