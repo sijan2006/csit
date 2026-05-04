@@ -5,6 +5,7 @@ typedef struct NodeType
 {
     int data;
     struct NodeType *next;
+    struct NodeType *prev;
 } Node;
 
 Node *head = NULL;
@@ -19,6 +20,7 @@ Node *create_node(int data)
     }
     temp->data = data;
     temp->next = NULL;
+    temp->prev = NULL;
     return temp;
 }
 
@@ -36,7 +38,7 @@ int count()
 
 void insert()
 {
-    int opt, d, n;
+    int opt, d;
 
     printf("\nEnter Option:[1] Insert at Beginning:[2] Insert at End:[3] Insert at nth Position:\n-> ");
     scanf("%d", &opt);
@@ -49,6 +51,8 @@ void insert()
     if (opt == 1)
     {
         t->next = head;
+        if (head != NULL)
+            head->prev = t;
         head = t;
     }
     else if (opt == 2)
@@ -58,9 +62,11 @@ void insert()
             temp = temp->next;
         }
         temp->next = t;
+        t->prev = temp;
     }
     else
     {
+        int n;
         printf("enter the posn");
         scanf("%d", &n);
         for (int i = 0; i < n - 1; i++)
@@ -68,6 +74,9 @@ void insert()
             temp = temp->next;
         }
         t->next = temp->next;
+        t->prev = temp;
+        if (temp->next != NULL)
+            temp->next->prev = t;
         temp->next = t;
     }
 }
@@ -83,6 +92,8 @@ void delete_node()
     if (opt == 1)
     {
         head = head->next;
+        if (head != NULL)
+            head->prev = NULL;
         free(temp);
     }
     else if (opt == 2)
@@ -104,6 +115,8 @@ void delete_node()
         }
         Node *t = temp->next;
         temp->next = temp->next->next;
+        if (temp->next != NULL)
+            temp->next->prev = temp;
         free(t);
     }
 }
